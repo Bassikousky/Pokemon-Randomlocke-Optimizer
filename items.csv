@@ -1,0 +1,888 @@
+nombre,valor
+Repelente,REPEL
+Superrepelente,SUPERREPEL
+Repelente Máximo,MAXREPEL
+Flauta Negra,BLACKFLUTE
+Flauta Blanca,WHITEFLUTE
+Miel,HONEY
+Parte Roja,REDSHARD
+Parte Amarilla,YELLOWSHARD
+Parte Azul,BLUESHARD
+Parte Verde,GREENSHARD
+Piedra Fuego,FIRESTONE
+Piedra Trueno,THUNDERSTONE
+Piedra Agua,WATERSTONE
+Piedra Hoja,LEAFSTONE
+Piedra Lunar,MOONSTONE
+Piedra Solar,SUNSTONE
+Piedra Noche,DUSKSTONE
+Piedra Alba,DAWNSTONE
+Piedra Día,SHINYSTONE
+Piedra Hielo,ICESTONE
+Manzana Dulce,SWEETAPPLE
+Manzana Ácida,TARTAPPLE
+Tetera Agrietada,CRACKEDPOT
+Tetera Rota,CHIPPEDPOT
+Brazal Galanuez,GALARICACUFF
+Corona Galanuez,GALARICAWREATH
+Bonguri Roja,REDAPRICORN
+Bonguri Amarilla,YELLOWAPRICORN
+Bonguri Azul,BLUEAPRICORN
+Bonguri Verde,GREENAPRICORN
+Bonguri Rosa,PINKAPRICORN
+Bonguri Blanca,WHITEAPRICORN
+Bonguri Negra,BLACKAPRICORN
+Fósil Helix,HELIXFOSSIL
+Fósil Domo,DOMEFOSSIL
+Ámbar Viejo,OLDAMBER
+Fósil Raíz,ROOTFOSSIL
+Fósil Garra,CLAWFOSSIL
+Fósil Cráneo,SKULLFOSSIL
+Fósil Coraza,ARMORFOSSIL
+Fósil Tapa,COVERFOSSIL
+Fósil Pluma,PLUMEFOSSIL
+Fósil Mandíbula,JAWFOSSIL
+Fósil Aleta,SAILFOSSIL
+Ornitofósil,FOSSILIZEDBIRD
+Ictiofósil,FOSSILIZEDFISH
+Dracofósil,FOSSILIZEDDRAKE
+Plesiofósil,FOSSILIZEDDINO
+Pluma Bella,PRETTYFEATHER
+Mini Seta,TINYMUSHROOM
+Seta Grande,BIGMUSHROOM
+Seta Aroma,BALMMUSHROOM
+Perla,PEARL
+Perla Grande,BIGPEARL
+Sarta de perlas,PEARLSTRING
+Polvoestelar,STARDUST
+Trozo Estrella,STARPIECE
+Fragmento Cometa,COMETSHARD
+Pepita,NUGGET
+Maxipepita,BIGNUGGET
+Escama Corazón,HEARTSCALE
+Cola Slowpoke,SLOWPOKETAIL
+Hueso Raro,RAREBONE
+Real de cobre,RELICCOPPER
+Real de plata,RELICSILVER
+Real de oro,RELICGOLD
+Ánfora Antigua,RELICVASE
+Brazal antiguo,RELICBAND
+Efigie Antigua,RELICSTATUE
+Corona Antigua,RELICCROWN
+Abono Rápido,GROWTHMULCH
+Abono Lento,DAMPMULCH
+Abono Fijador,STABLEMULCH
+Abono Brote,GOOEYMULCH
+Sal Cardumen,SHOALSALT
+Concha Cardumen,SHOALSHELL
+Piedra Espíritu,ODDKEYSTONE
+Néctar Rojo,REDNECTAR
+Néctar Amarillo,YELLOWNECTAR
+Néctar Rosa,PINKNECTAR
+Néctar Violeta,PURPLENECTAR
+Globo Helio,AIRBALLOON
+Polvo Brillo,BRIGHTPOWDER
+Mineral Evolutivo,EVIOLITE
+Piedra Pómez,FLOATSTONE
+Lazo Destino,DESTINYKNOT
+Casco Dentado,ROCKYHELMET
+Chaleco Asalto,ASSAULTVEST
+Gafa Protectora,SAFETYGOGGLES
+Paracontacto,PROTECTIVEPADS
+Botas Gruesas,HEAVYDUTYBOOTS
+Parasol Multiuso,UTILITYUMBRELLA
+Botón Escape,EJECTBUTTON
+Mochila Escape,EJECTPACK
+Tarjeta Roja,REDCARD
+Muda Concha,SHEDSHELL
+Bola Humo,SMOKEBALL
+Huevo Suerte,LUCKYEGG
+Repartir Exp,EXPSHARE
+Repartir Exp Equipo,EXPSHARE2
+Moneda Amuleto,AMULETCOIN
+Cascabel Alivio,SOOTHEBELL
+Amuleto,CLEANSETAG
+Cinta Elección,CHOICEBAND
+Gafas Elección,CHOICESPECS
+Pañuelo Elección,CHOICESCARF
+Roca Calor,HEATROCK
+Roca Lluvia,DAMPROCK
+Roca Suave,SMOOTHROCK
+Roca Helada,ICYROCK
+Cubresuelos,TERRAINEXTENDER
+Refleluz,LIGHTCLAY
+Garra Garfio,GRIPCLAW
+Banda Atadura,BINDINGBAND
+Raíz Grande,BIGROOT
+Lodo Negro,BLACKSLUDGE
+Restos,LEFTOVERS
+Cascabel Concha,SHELLBELL
+Hierba Mental,MENTALHERB
+Hierba Blanca,WHITEHERB
+Hierba Única,POWERHERB
+Tubérculo,ABSORBBULB
+Pila,CELLBATTERY
+Musgo Brillante,LUMINOUSMOSS
+Bola de Nieve,SNOWBALL
+Seguro Debilidad,WEAKNESSPOLICY
+Seguro Fallo,BLUNDERPOLICY
+Espray Bucal,THROATSPRAY
+Nerviosfera,ADRENALINEORB
+Servicio Raro,ROOMSERVICE
+Semilla Electro,ELECTRICSEED
+Semilla Hierba,GRASSYSEED
+Semilla Bruma,MISTYSEED
+Semilla Psique,PSYCHICSEED
+Vidasfera,LIFEORB
+Cinta Experto,EXPERTBELT
+Metrónomo,METRONOME
+Cinta Fuerte,MUSCLEBAND
+Gafas Especiales,WISEGLASSES
+Garra Afilada,RAZORCLAW
+Periscopio,SCOPELENS
+Lupa,WIDELENS
+Telescopio,ZOOMLENS
+Roca del Rey,KINGSROCK
+Colmillo Agudo,RAZORFANG
+Cola Plúmbea,LAGGINGTAIL
+Garra Rápida,QUICKCLAW
+Cinta Aguante,FOCUSBAND
+Banda Aguante,FOCUSSASH
+Llamasfera,FLAMEORB
+Toxisfera,TOXICORB
+Toxiestrella,STICKYBARB
+Bola Férrea,IRONBALL
+Blanco,RINGTARGET
+Brazal Firme,MACHOBRACE
+Pesa Recia,POWERWEIGHT
+Brazal Recio,POWERBRACER
+Cinto Recio,POWERBELT
+Lente Recia,POWERLENS
+Banda Recia,POWERBAND
+Franja Recia,POWERANKLET
+Incienso Suave,LAXINCENSE
+Incienso Lento,FULLINCENSE
+Incienso Duplo,LUCKINCENSE
+Incienso Puro,PUREINCENSE
+Incienso Marino,SEAINCENSE
+Incienso Aqua,WAVEINCENSE
+Incienso Floral,ROSEINCENSE
+Incienso Raro,ODDINCENSE
+Incienso Roca,ROCKINCENSE
+Carbón,CHARCOAL
+Agua Mística,MYSTICWATER
+Imán,MAGNET
+Semilla Milagro,MIRACLESEED
+Antiderretir,NEVERMELTICE
+Cinturón Negro,BLACKBELT
+Flecha Venenosa,POISONBARB
+Arena Fina,SOFTSAND
+Pico Afilado,SHARPBEAK
+Cuchara Torcida,TWISTEDSPOON
+Polvo Plata,SILVERPOWDER
+Piedra Dura,HARDSTONE
+Hechizo,SPELLTAG
+Colmillo Dragón,DRAGONFANG
+Gafas de Sol,BLACKGLASSES
+Revestim. Metálico,METALCOAT
+Pañuelo Seda,SILKSCARF
+Tabla Llama,FLAMEPLATE
+Tabla Linfa,SPLASHPLATE
+Tabla Trueno,ZAPPLATE
+Tabla Pradal,MEADOWPLATE
+Tabla Helada,ICICLEPLATE
+Tabla Fuerte,FISTPLATE
+Tabla Tóxica,TOXICPLATE
+Tabla Terrax,EARTHPLATE
+Tabla Cielo,SKYPLATE
+Tabla Mental,MINDPLATE
+Tabla Bicho,INSECTPLATE
+Tabla Pétrea,STONEPLATE
+Tabla Terror,SPOOKYPLATE
+Tabla Draco,DRACOPLATE
+Tabla Oscura,DREADPLATE
+Tabla Acero,IRONPLATE
+Tabla Duende,PIXIEPLATE
+Gema Fuego,FIREGEM
+Gema Agua,WATERGEM
+Gema Eléctrico,ELECTRICGEM
+Gema Planta,GRASSGEM
+Gema Hielo,ICEGEM
+Gema Lucha,FIGHTINGGEM
+Gema Veneno,POISONGEM
+Gema Tierra,GROUNDGEM
+Gema Volador,FLYINGGEM
+Gema Psíquico,PSYCHICGEM
+Gema Bicho,BUGGEM
+Gema Roca,ROCKGEM
+Gema Fantasma,GHOSTGEM
+Gema Dragón,DRAGONGEM
+Gema Siniestro,DARKGEM
+Gema Acero,STEELGEM
+Gema Hada,FAIRYGEM
+Gema Normal,NORMALGEM
+Bolaluminosa,LIGHTBALL
+Puño Suerte,LUCKYPUNCH
+Polvo Metálico,METALPOWDER
+Polvo Veloz,QUICKPOWDER
+Hueso Grueso,THICKCLUB
+Puerro,LEEK
+Rocío Bondad,SOULDEW
+Diente Marino,DEEPSEATOOTH
+Escama Marina,DEEPSEASCALE
+Diamansfera,ADAMANTORB
+Lustresfera,LUSTROUSORB
+Griseosfera,GRISEOUSORB
+Espada Oxidada,RUSTEDSWORD
+Escudo Oxidado,RUSTEDSHIELD
+HidroROM,DOUSEDRIVE
+FulgoROM,SHOCKDRIVE
+PiroROM,BURNDRIVE
+CrioROM,CHILLDRIVE
+Disco Fuego,FIREMEMORY
+Disco Agua,WATERMEMORY
+Disco Eléctrico,ELECTRICMEMORY
+Disco Planta,GRASSMEMORY
+Disco Hielo,ICEMEMORY
+Disco Lucha,FIGHTINGMEMORY
+Disco Veneno,POISONMEMORY
+Disco Tierra,GROUNDMEMORY
+Disco Volador,FLYINGMEMORY
+Disco Psíquico,PSYCHICMEMORY
+Disco Bicho,BUGMEMORY
+Disco Roca,ROCKMEMORY
+Disco Fantasma,GHOSTMEMORY
+Disco Dragón,DRAGONMEMORY
+Disco Siniestro,DARKMEMORY
+Disco Acero,STEELMEMORY
+Disco Hada,FAIRYMEMORY
+Piedra Eterna,EVERSTONE
+Escamadragón,DRAGONSCALE
+Mejora,UPGRADE
+Disco Extraño,DUBIOUSDISC
+Protector,PROTECTOR
+Electrizador,ELECTIRIZER
+Magmatizador,MAGMARIZER
+Tela Terrible,REAPERCLOTH
+Escama Bella,PRISMSCALE
+Piedra Oval,OVALSTONE
+Dulce de Nata,WHIPPEDDREAM
+Saquito Fragante,SACHET
+Confite Fresa,STRAWBERRYSWEET
+Confite Corazón,LOVESWEET
+Confite Fruto,BERRYSWEET
+Confite Trébol,CLOVERSWEET
+Confite Flor,FLOWERSWEET
+Confite Estrella,STARSWEET
+Confite Lazo,RIBBONSWEET
+Venusaurita X,VENUSAURITEX
+Venusaurita Y,VENUSAURITEY
+Charizardita X,CHARIZARDITEX
+Charizardita Y,CHARIZARDITEY
+Blastoisita X,BLASTOISINITEX
+Blastoisita Y,BLASTOISINITEY
+Beedrillita,BEEDRILLITE
+Pidgeotita,PIDGEOTITE
+Alakazamita,ALAKAZITE
+Slowbronita,SLOWBRONITE
+Gengarita X,GENGARITEX
+Gengarita Y,GENGARITEY
+Kangaskhanita,KANGASKHANITE
+Pinsirita,PINSIRITE
+Gyaradosita,GYARADOSITE
+Aerodactylita,AERODACTYLITE
+Mewtwoita X,MEWTWONITEX
+Mewtwoita Y,MEWTWONITEY
+Ampharosita,AMPHAROSITE
+Steelixita,STEELIXITE
+Scizorita,SCIZORITE
+Heracrossita,HERACRONITE
+Houndoomita,HOUNDOOMINITE
+Tyranitarita,TYRANITARITE
+Sceptilita,SCEPTILITE
+Blazikenita,BLAZIKENITE
+Swampertita,SWAMPERTITE
+Gardevoirita,GARDEVOIRITE
+Sableynita,SABLENITE
+Mawilita,MAWILITE
+Aggronita,AGGRONITE
+Medichamita,MEDICHAMITE
+Manectricita,MANECTITE
+Sharpedonita,SHARPEDONITE
+Cameruptita,CAMERUPTITE
+Altarianita,ALTARIANITE
+Banettita,BANETTITE
+Absolita,ABSOLITE
+Glalita,GLALITITE
+Salamencita,SALAMENCITE
+Metagrossita,METAGROSSITE
+Latiasita,LATIASITE
+Latiosita,LATIOSITE
+Lopunnita,LOPUNNITE
+Garchompita,GARCHOMPITE
+Lucarita,LUCARIONITE
+Abomasnowita,ABOMASITE
+Galladita,GALLADITE
+Audinita,AUDINITE
+Diancita,DIANCITE
+Jumplufita,JUMPLUFITE
+Rillabomita,RILLABOOMITE
+Cinderecita,CINDERECITE
+Inteleonita,INTELEONITE
+Snorlaxita,SNORLAXITE
+Prisma Rojo,REDORB
+Prisma Azul,BLUEORB
+Poción,POTION
+Superpoción,SUPERPOTION
+Hiperpoción,HYPERPOTION
+Poción Máxima,MAXPOTION
+Restaura Todo,FULLRESTORE
+Ceniza Sagrada,SACREDASH
+Despertar,AWAKENING
+Antídoto,ANTIDOTE
+Antiquemadura,BURNHEAL
+Antiparalizante,PARALYZEHEAL
+Antihielo,ICEHEAL
+Cura Total,FULLHEAL
+Rokikos,PEWTERCRUNCHIES
+Caramelo Furia,RAGECANDYBAR
+Galleta Lava,LAVACOOKIE
+Barrita Plus,OLDGATEAU
+Porcehelado,CASTELIACONE
+Crêpe Luminalia,LUMIOSEGALETTE
+Galleta Yantra,SHALOURSABLE
+Malasada Maxi,BIGMALASADA
+Revivir,REVIVE
+Revivir Máximo,MAXREVIVE
+Zumo de Baya,BERRYJUICE
+Corazón Dulce,SWEETHEART
+Agua Fresca,FRESHWATER
+Refresco,SODAPOP
+Limonada,LEMONADE
+Leche Mu-mu,MOOMOOMILK
+Polvoenergía,ENERGYPOWDER
+Raíz Energía,ENERGYROOT
+Polvo Curación,HEALPOWDER
+Hierba Revivir,REVIVALHERB
+Maxipanal,MAXHONEY
+Éter,ETHER
+Éter Máximo,MAXETHER
+Elixir,ELIXIR
+Elixir Máximo,MAXELIXIR
+Más PP,PPUP
+PP Máximos,PPMAX
+Más PS,HPUP
+Proteína,PROTEIN
+Hierro,IRON
+Calcio,CALCIUM
+Zinc,ZINC
+Carburante,CARBOS
+Pluma Vigor,HEALTHFEATHER
+Pluma Músculo,MUSCLEFEATHER
+Pluma Aguante,RESISTFEATHER
+Pluma Intelecto,GENIUSFEATHER
+Pluma Mente,CLEVERFEATHER
+Pluma Ímpetu,SWIFTFEATHER
+Chapa Vigor,SCapsula
+Chapa Fuerte,ACapsula
+Chapa Robusta,DCapsula
+Chapa Sabia,AECapsula
+Chapa Espíritu,DECapsula
+Chapa Ímpetu,VCapsula
+Menta Huraña,LONELYMINT
+Menta Firme,ADAMANTMINT
+Menta Pícara,NAUGHTYMINT
+Menta Audaz,BRAVEMINT
+Menta Osada,BOLDMINT
+Menta Agitada,IMPISHMINT
+Menta Floja,LAXMINT
+Menta Plácida,RELAXEDMINT
+Menta Modesta,MODESTMINT
+Menta Afable,MILDMINT
+Menta Alocada,RASHMINT
+Menta Mansa,QUIETMINT
+Menta Serena,CALMMINT
+Menta Amable,GENTLEMINT
+Menta Cauta,CAREFULMINT
+Menta Grosera,SASSYMINT
+Menta Miedosa,TIMIDMINT
+Menta Activa,HASTYMINT
+Menta Alegre,JOLLYMINT
+Menta Ingenua,NAIVEMINT
+Menta Seria,SERIOUSMINT
+Super Cápsula,SUPERCAPSULE
+Caramelo Exp. XS,EXPCANDYXS
+Caramelo Exp. S,EXPCANDYS
+Caramelo Exp. M,EXPCANDYM
+Caramelo Exp. L,EXPCANDYL
+Caramelo Exp. XL,EXPCANDYXL
+Caramelo Raro,RARECANDY
+Caramelo Malo,UNRARECANDY
+Poké Ball,POKEBALL
+Super Ball,GREATBALL
+Ultra Ball,ULTRABALL
+Master Ball,MASTERBALL
+Safari Ball,SAFARIBALL
+Competi Ball,SPORTBALL
+Malla Ball,NETBALL
+Buceo Ball,DIVEBALL
+Nido Ball,NESTBALL
+Acopio Ball,REPEATBALL
+Turno Ball,TIMERBALL
+Lujo Ball,LUXURYBALL
+Honor Ball,PREMIERBALL
+Ocaso Ball,DUSKBALL
+Sana Ball,HEALBALL
+Veloz Ball,QUICKBALL
+Gloria Ball,CHERISHBALL
+Rapid Ball,FASTBALL
+Nivel Ball,LEVELBALL
+Cebo Ball,LUREBALL
+Peso Ball,HEAVYBALL
+Amor Ball,LOVEBALL
+Amigo Ball,FRIENDBALL
+Luna Ball,MOONBALL
+Ensueño Ball,DREAMBALL
+Ente Ball,BEASTBALL
+MT01,TM01
+MT02,TM02
+MT03,TM03
+MT04,TM04
+MT05,TM05
+MT06,TM06
+MT07,TM07
+MT08,TM08
+MT09,TM09
+MT10,TM10
+MT11,TM11
+MT12,TM12
+MT13,TM13
+MT14,TM14
+MT15,TM15
+MT16,TM16
+MT17,TM17
+MT18,TM18
+MT19,TM19
+MT20,TM20
+MT21,TM21
+MT22,TM22
+MT23,TM23
+MT24,TM24
+MT25,TM25
+MT26,TM26
+MT27,TM27
+MT28,TM28
+MT29,TM29
+MT30,TM30
+MT31,TM31
+MT32,TM32
+MT33,TM33
+MT34,TM34
+MT35,TM35
+MT36,TM36
+MT37,TM37
+MT38,TM38
+MT39,TM39
+MT40,TM40
+MT41,TM41
+MT42,TM42
+MT43,TM43
+MT44,TM44
+MT45,TM45
+MT46,TM46
+MT47,TM47
+MT48,TM48
+MT49,TM49
+MT50,TM50
+MT51,TM51
+MT52,TM52
+MT53,TM53
+MT54,TM54
+MT55,TM55
+MT56,TM56
+MT57,TM57
+MT58,TM58
+MT59,TM59
+MT60,TM60
+MT61,TM61
+MT62,TM62
+MT63,TM63
+MT64,TM64
+MT65,TM65
+MT66,TM66
+MT67,TM67
+MT68,TM68
+MT69,TM69
+MT70,TM70
+MT71,TM71
+MT72,TM72
+MT73,TM73
+MT74,TM74
+MT75,TM75
+MT76,TM76
+MT77,TM77
+MT78,TM78
+MT79,TM79
+MT80,TM80
+MT81,TM81
+MT82,TM82
+MT83,TM83
+MT84,TM84
+MT85,TM85
+MT86,TM86
+MT87,TM87
+MT88,TM88
+MT89,TM89
+MT90,TM90
+MT91,TM91
+MT92,TM92
+MT93,TM93
+MT94,TM94
+MT95,TM95
+MT96,TM96
+MT97,TM97
+MT98,TM98
+MT99,TM99
+MT100,TM100
+MT101,TM101
+MT102,TM102
+MT103,TM103
+MT104,TM104
+MT105,TM105
+MT106,TM106
+MT107,TM107
+MT108,TM108
+MT109,TM109
+MT110,TM110
+MT111,TM111
+MT112,TM112
+MT113,TM113
+MT114,TM114
+MT115,TM115
+MT116,TM116
+MT117,TM117
+MT118,TM118
+MT119,TM119
+MT120,TM120
+MT121,TM121
+MT122,TM122
+MT123,TM123
+MT124,TM124
+MT125,TM125
+MO01,HM01
+MO02,HM02
+MO03,HM03
+MO04,HM04
+MO05,HM05
+MO06,HM06
+Baya Zreza,CHERIBERRY
+Baya Atania,CHESTOBERRY
+Baya Meloc,PECHABERRY
+Baya Safre,RAWSTBERRY
+Baya Perasi,ASPEARBERRY
+Baya Zanama,LEPPABERRY
+Baya Aranja,ORANBERRY
+Baya Caquic,PERSIMBERRY
+Baya Ziuela,LUMBERRY
+Baya Zidra,SITRUSBERRY
+Baya Higog,FIGYBERRY
+Baya Wiki,WIKIBERRY
+Baya Ango,MAGOBERRY
+Baya Guaya,AGUAVBERRY
+Baya Pabaya,IAPAPABERRY
+Baya Frambu,RAZZBERRY
+Baya Oram,BLUKBERRY
+Baya Latano,NANABBERRY
+Baya Peragu,WEPEARBERRY
+Baya Pinia,PINAPBERRY
+Baya Grana,POMEGBERRY
+Baya Algama,KELPSYBERRY
+Baya Ispero,QUALOTBERRY
+Baya Meluce,HONDEWBERRY
+Baya Uvav,GREPABERRY
+Baya Tamate,TAMATOBERRY
+Baya Mais,CORNNBERRY
+Baya Aostan,MAGOSTBERRY
+Baya Rautan,RABUTABERRY
+Baya Monli,NOMELBERRY
+Baya Wikano,SPELONBERRY
+Baya Plama,PAMTREBERRY
+Baya Sambia,WATMELBERRY
+Baya Rudion,DURINBERRY
+Baya Andano,BELUEBERRY
+Baya Caoca,OCCABERRY
+Baya Pasio,PASSHOBERRY
+Baya Gualot,WACANBERRY
+Baya Tamar,RINDOBERRY
+Baya Rimoya,YACHEBERRY
+Baya Pomaro,CHOPLEBERRY
+Baya Kebia,KEBIABERRY
+Baya Acardo,SHUCABERRY
+Baya Kouba,COBABERRY
+Baya Payapa,PAYAPABERRY
+Baya Yecana,TANGABERRY
+Baya Alcho,CHARTIBERRY
+Baya Drasi,KASIBBERRY
+Baya Anjiro,HABANBERRY
+Baya Dillo,COLBURBERRY
+Baya Baribá,BABIRIBERRY
+Baya Hibis,ROSELIBERRY
+Baya Chilan,CHILANBERRY
+Baya Lichi,LIECHIBERRY
+Baya Gonlan,GANLONBERRY
+Baya Aslac,SALACBERRY
+Baya Yapati,PETAYABERRY
+Baya Aricoc,APICOTBERRY
+Baya Zonlan,LANSATBERRY
+Baya Arabol,STARFBERRY
+Baya Enigma,ENIGMABERRY
+Baya Lagro,MICLEBERRY
+Baya Chiri,CUSTAPBERRY
+Baya Jaboca,JABOCABERRY
+Baya Magua,ROWAPBERRY
+Baya Biglia,KEEBERRY
+Baya Maranga,MARANGABERRY
+Carta Hierba,GRASSMAIL
+Carta Fuego,FLAMEMAIL
+Carta Pompas,BUBBLEMAIL
+Carta Flores,BLOOMMAIL
+Carta Mina,TUNNELMAIL
+Carta Acero,STEELMAIL
+Carta Corazón,HEARTMAIL
+Carta Nieve,SNOWMAIL
+Carta Sideral,SPACEMAIL
+Carta Áerea,AIRMAIL
+Carta Mosaico,MOSAICMAIL
+Carta Pared,BRICKMAIL
+Ataque X 1,XATTACK
+Ataque X 2,XATTACK2
+Ataque X 3,XATTACK3
+Ataque X 6,XATTACK6
+Defensa X 1,XDEFENSE
+Defensa X 2,XDEFENSE2
+Defensa X 3,XDEFENSE3
+Defensa X 6,XDEFENSE6
+Ataque Especial X 1,XSPATK
+Ataque Especial X 2,XSPATK2
+Ataque Especial X 3,XSPATK3
+Ataque Especial X 6,XSPATK6
+Defensa Especial X 1,XSPDEF
+Defensa Especial X 2,XSPDEF2
+Defensa Especial X 3,XSPDEF3
+Defensa Especial X 6,XSPDEF6
+Velocidad X 1,XSPEED
+Velocidad X 2,XSPEED2
+Velocidad X 3,XSPEED3
+Velocidad X 6,XSPEED6
+Precisión X 1,XACCURACY
+Precisión X 2,XACCURACY2
+Precisión X 3,XACCURACY3
+Precisión X 6,XACCURACY6
+Maxisetas,MAXMUSHROOMS
+Directo 1,DIREHIT
+Directo 2,DIREHIT2
+Directo 3,DIREHIT3
+Prot. Especial,GUARDSPEC
+Quitaestado,RESETURGE
+Habilitador,ABILITYURGE
+Activaobjeto,ITEMURGE
+Tiraobjeto,ITEMDROP
+Flauta Azul,BLUEFLUTE
+Flauta Amarilla,YELLOWFLUTE
+Flauta Roja,REDFLUTE
+Pokémuñeco,POKEDOLL
+Cola Skitty,FLUFFYTAIL
+Pokéseñuelo,POKETOY
+Bici,BICYCLE
+Caña Vieja,OLDROD
+Caña Buena,GOODROD
+Caña de Pescar,SUPERROD
+Buscaobjetos,ITEMFINDER
+Zahorí,DOWSINGMACHINE
+Poké Radar,POKERADAR
+Mapa,TOWNMAP
+Cuerda Huida,ESCAPEROPE
+Monedero,COINCASE
+Poké Flauta,POKEFLUTE
+Saco Hollín,SOOTSACK
+Detector Silph,SILPHSCOPE
+Detector Devon,DEVONSCOPE
+Squirgadera,SQUIRTBOTTLE
+Psydugadera,SPRAYDUCK
+Wailmegadera,WAILMERPAIL
+Lotadgadera,SPRINKLOTAD
+Gracídea,GRACIDEA
+Espejo Veraz,REVEALGLASS
+Vasija Castigo,PRISONBOTTLE
+Catálogo Rotom,ROTOMCATALOG
+Arca de Zygarde,ZYGARDECUBE
+Punta ADN,DNASPLICERS
+Punta ADN,DNASPLICERSUSED
+Necrosol,NSOLARIZER
+Necrosol,NSOLARIZERUSED
+Necroluna,NLUNARIZER
+Necroluna,NLUNARIZERUSED
+Riendas Unión,REINSOFUNITY
+Riendas Unión,REINSOFUNITYUSED
+Amuleto Oval,OVALCHARM
+Amuleto Iris,SHINYCHARM
+Amuleto Captura,CATCHINGCHARM
+Amuleto Exp,EXPCHARM
+Mega Aro,MEGARING
+Pokémon Box Link,POKEMONBOXLINK
+Carné Espacial,AURORATICKET
+Mapa Viejo,OLDSEAMAP
+Mineral Negro,BLACKAUGURITE
+Bloque de Turba,PEATBLOCK
+Cordón Unión,LINKINGCORD
+Gran Diamansfera,ADAMANTCRYSTAL
+Gran Lustresfera,LUSTROUSGLOBE
+Tabla Legendaria,LEGENDPLATE
+Tabla Normal,BLANKPLATE
+Gran Griseosfera,GRISEOUSCORE
+Armadura Auspiciosa,AUSPICIOUSARMOR
+Armadura Maldita,MALICIOUSARMOR
+Manuscrito Sombras,SCROLLOFDARKNESS
+Manuscrito Aguas,SCROLLOFWATERS
+Distintivo de Líder,LEADERSCREST
+Energía Potenciadora,BOOSTERENERGY
+Escudo Habilidad,ABILITYSHIELD
+Amuleto Puro,CLEARAMULET
+Hierba Copia,MIRRORHERB
+Guante de Boxeo,PUNCHINGGLOVE
+Capa Furtiva,COVERTCLOAK
+Dado Trucado,LOADEDDICE
+Moneda de Gimmighoul,GIMMIGHOULCOIN
+Bambú Pequeño,TINYBAMBOOSHOOT
+Bambú Grande,BIGBAMBOOSHOOT
+Libro Escarlata,SCARLETBOOK
+Libro Púrpura,VIOLETBOOK
+Mochi Vigor,HEALTHMOCHI
+Mochi Músculo,MUSCLEMOCHI
+Mochi Aguante,RESISTMOCHI
+Mochi Intelecto,GENIUSMOCHI
+Mochi Mente,CLEVERMOCHI
+Mochi Ímpetu,SWIFTMOCHI
+Mochi Reinicio,FRESHSTARTMOCHI
+Pluma Feérica,FAIRYFEATHER
+Manzana Melosa,SYRUPYAPPLE
+Cuenco Mediocre,UNREMARKABLETEACUP
+Cuenco Exquisito,MASTERPIECETEACUP
+Máscara Fuente,WELLSPRINGMASK
+Máscara Horno,HEARTHFLAMEMASK
+Máscara Cimiento,CORNERSTONEMASK
+Máscara Turquesa,TEALMASK
+Metal Compuesto,METALALLOY
+Disco Índigo,INDIGODISK
+Baya Meloc singular,MYTHICALPECHABERRY
+Meteorito,METEORITE
+Repelente Infinito,INFREPEL
+Repelente Infinito,INFREPELOFF
+PokéRadar,RADAR
+Pokévial,VIAL
+Pokévial,EMPTYVIAL
+Incubadora,EGGHATCHER
+PokéRider,POKERIDER
+Peluca Regia,PELUCAREGIA
+Pluma Eólica,PLUMAEOLICA
+Pikachuita,PIKACHUITE
+Eeveeita,EEVEEITE
+Laprasita,LAPRASITE
+Butterfreeita,BUTTERFREEITE
+Machampita,MACHAMPITE
+Kinglerita,KINGLERITE
+Garbodorita,GARBODORITE
+Corvinightita,CORVIKNIGHTITE
+Orbeetleita,ORBEETLEITE
+Drednawita,DREDNAWITE
+Coalossalita,COALOSSALITE
+Flappletunita,FLAPPLETUNITE
+Sandacondita,SANDACONDITE
+Toxtricitita,TOXTRICITITE
+Centiskorchita,CENTISKORCHITE
+Hatterenita,HATTERENITE
+Grimmsnarlita,GRIMMSNARLITE
+Alcremita,ALCREMITE
+Copperajita,COPPERAJITE
+Duraludonita,DURALUDONITE
+Dragonitita,DRAGONITITE
+Hawluchanita,HAWLUCHITE
+Victreebelita,VICTREEBELITE
+Chesnaughtita,CHESNAUGHTITE
+Delphoxita,DELPHOXITE
+Greninjanita,GRENINJITE
+Clefablita,CLEFABLITE
+Starmita,STARMINITE
+Meganiumita,MEGANIUMITE
+Feraligatrita,FERALIGITE
+Skarmorita,SKARMORITE
+Froslassita,FROSLASSITE
+Emboarita,EMBOARITE
+Excadrilita,EXCADRITE
+Scolipeditas,SCOLIPITE
+Elektrossita,EELEKTROSSITE
+Scraftita,SCRAFTINITE
+Chandelurita,CHANDELURITE
+Pyroarita,PYROARITE
+Malamarita,MALAMARITE
+Barbaraclita,BARBARACITE
+Dragalgita,DRAGALGITE
+Drampanita,DRAMPANITE
+Falinksita,FALINKSITE
+Zygardita,ZYGARDITE
+Floettita,FLOETTITE
+Garchompita Z,GARCHOMPITEZ
+Absolita Z,ABSOLITEZ
+Lucarita Z,LUCARIONITEZ
+Scovillainita,SCOVILLAINITE
+Crabominablita,CRABOMINITE
+Staraptorita,STARAPTITE
+Golurkita,GOLURKITE
+Raichuita X,RAICHUITEX
+Raichuita Y,RAICHUITEY
+Darkrainita,DARKRANITE
+Tatsugirita,TATSUGIRINITE
+Magearnita,MAGEARNITE
+Golisopodita,GOLISOPITE
+Meowsticita,MEOWSTICITE
+Heatranita,HEATRANITE
+Glimmoranita,GLIMMORANITE
+Baxcaliburita,BAXCALIBRITE
+Chimechita,CHIMECHITE
+Zeraoranita,ZERAORITE
+Ticket Barco,TICKETBARCO
+Bono Bici,BONOBICI
+Cenizas Sagradas,CENIZASSAGRADAS
+Visor Silph,VISORSILPH
+Llave Ascensor,LLAVEROCKET
+Resguardo,RESGUARDO
+Pokémuñeco Especial,MUNECOCOPIONA
+Anillo de Compromiso,ANILLO
+Té Secreto,TESECRETO
+Tarjeta Magnética 1,TMAGN1
+Tarjeta Magnética 2,TMAGN2
+Poción Brillante,SHINYZADOR
+Llave Supersecreta,LLAVESUPERSECRETA
+Campana Dorada,CAMPANADORADA
+Campana Plateada,CAMPANAPLATEADA
+Cristal Prisma,CRISTALPRISMA
+Llave Camión,LLAVECAMION
+Ofrenda Prismática,OFRENDAPRISMATICA
+Pluma de Articuno,PLUMAARTICUNO
+Pluma de Zapdos,PLUMAZAPDOS
+Pluma de Moltres,PLUMAMOLTRES
+Diploma,DIPLOMA
+Trufa,TRUFA
+Supermin. Evol.,SUPEREVIOLITE
+Random. de habs.,RANDOMABILITYCAPSULE
+Lente de la Verdad,LENSOFTRUTH
+Pico,ROCKSMASHITEM
+Talador,CUTITEM
+Brazo Robótico,STRENGTHITEM
+Iluminador,FLASHITEM
+Montura Surf,SURFITEM
+Equipo de Escalada,ROCKCLIMBITEM
+Álbum de Fotos,ALBUMFOTOS
+Libro de Reglas,RULEBOOK
+Moneda Prodigiosa,MONEDAPRODIG
+Desbugueador,DESBUGUEADOR
