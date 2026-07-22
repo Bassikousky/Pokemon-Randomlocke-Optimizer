@@ -82,7 +82,7 @@ def get_name_key(name):
     return None
 
 def build_sprite_name(name, form=""):
-    base = name.lower().replace(' ', '-').replace('.', '').replace('\u2640', '-f').replace('\u2642', '-m')
+    base = name.lower().replace(' ', '-').replace('.', '').replace("'", '').replace('\u2640', '-f').replace('\u2642', '-m')
     f = form.strip() if form else ""
     if not f or f == " ":
         return base
@@ -93,6 +93,24 @@ def build_sprite_name(name, form=""):
         return f"{base}-galar"
     if f_lower.startswith("hisuian "):
         return f"{base}-hisui"
+    if f_lower.startswith("mega "):
+        if f_lower.rstrip().endswith(" z"):
+            return base + "-mega-z"
+        gmax_pokemon = {"venusaur","charizard","blastoise","butterfree","pikachu","meowth","machamp","gengar","kingler","lapras","eevee","snorlax","garbodor","melmetal","rillaboom","cinderace","inteleon","corviknight","orbeetle","drednaw","coalossal","flapple","appletun","sandaconda","centiskorch","hatterene","grimmsnarl","alcremie","copperajah","duraludon","urshifu"}
+        return base + ("-gmax" if base in gmax_pokemon else "-mega")
+    if f_lower.startswith("gmax ") or f_lower.startswith("gigantamax "):
+        return base + "-gmax"
+    sprite_suffixes = {
+        "oricorio": {"baile style": "-baile", "pom-pom style": "-pom-pom", "pa'u style": "-pau", "sensu style": "-sensu"},
+        "wormadam": {"plant cloak": "-plant", "sandy cloak": "-sandy", "trash cloak": "-trash"},
+        "deoxys": {"normal forme": "-normal", "attack forme": "-attack", "defense forme": "-defense", "speed forme": "-speed"},
+        "rotom": {"heat rotom": "-heat", "wash rotom": "-wash", "frost rotom": "-frost", "fan rotom": "-fan", "mow rotom": "-mow"},
+        "castform": {"sunny form": "-sunny", "rainy form": "-rainy", "snowy form": "-snowy"},
+        "darmanitan": {"standard mode": "-standard", "zen mode": "-zen", "galarian standard mode": "-galar-standard", "galarian zen mode": "-galar-zen"},
+    }
+    forms = sprite_suffixes.get(base)
+    if forms and f_lower in forms:
+        return base + forms[f_lower]
     return base
 
 def is_regional_form(form):
