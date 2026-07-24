@@ -366,8 +366,8 @@ h2 { margin-bottom: 15px; font-size: 1.4em; border-bottom: 2px solid #16213e; pa
         <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
           <input type="text" id="caughtSearch" data-i18n-placeholder="searchPlaceholder" placeholder="Search by name or nickname..." style="padding:8px 12px;border:1px solid #333;border-radius:8px;background:#1a1a2e;color:#e0e0e0;font-size:0.9em;width:170px" oninput="renderCaught()">
           <select id="sortOrder" style="padding:8px 12px;border:1px solid #333;border-radius:8px;background:#1a1a2e;color:#e0e0e0;font-size:0.85em" onchange="renderCaught()">
-            <option value="newest">Newest</option>
-            <option value="oldest">Oldest</option>
+            <option value="newest">Oldest</option>
+            <option value="oldest">Newest</option>
             <option value="name">Name A-Z</option>
             <option value="name_desc">Name Z-A</option>
           </select>
@@ -656,13 +656,29 @@ function getNameKey(name) {
   return null;
 }
 function buildSpriteName(name, form) {
-  let base = name.toLowerCase().replace(/ /g,'-').replace(/\./g,'').replace(/\u2640/g,'-f').replace(/\u2642/g,'-m');
+  let base = name.toLowerCase().replace(/ /g,'-').replace(/\./g,'').replace(/'/g,'').replace(/\u2640/g,'-f').replace(/\u2642/g,'-m');
   const f = (form||'').trim();
   if (!f||f===' ') return base;
   const fl = f.toLowerCase();
   if (fl.startsWith('alolan ')) return base+'-alola';
   if (fl.startsWith('galarian ')) return base+'-galar';
   if (fl.startsWith('hisuian ')) return base+'-hisui';
+  if (fl.startsWith('mega ')) {
+    if (fl.endsWith(' z')) return base+'-mega-z';
+    const gmaxPokemon = new Set(['venusaur','charizard','blastoise','butterfree','pikachu','meowth','machamp','gengar','kingler','lapras','eevee','snorlax','garbodor','melmetal','rillaboom','cinderace','inteleon','corviknight','orbeetle','drednaw','coalossal','flapple','appletun','sandaconda','centiskorch','hatterene','grimmsnarl','alcremie','copperajah','duraludon','urshifu']);
+    return base + (gmaxPokemon.has(base) ? '-gmax' : '-mega');
+  }
+  if (fl.startsWith('gmax ') || fl.startsWith('gigantamax ')) return base+'-gmax';
+  const spriteSuffixes = {
+    'oricorio': {'baile style': '-baile', 'pom-pom style': '-pom-pom', "pa'u style": '-pau', 'sensu style': '-sensu'},
+    'wormadam': {'plant cloak': '-plant', 'sandy cloak': '-sandy', 'trash cloak': '-trash'},
+    'deoxys': {'normal forme': '-normal', 'attack forme': '-attack', 'defense forme': '-defense', 'speed forme': '-speed'},
+    'rotom': {'heat rotom': '-heat', 'wash rotom': '-wash', 'frost rotom': '-frost', 'fan rotom': '-fan', 'mow rotom': '-mow'},
+    'castform': {'sunny form': '-sunny', 'rainy form': '-rainy', 'snowy form': '-snowy'},
+    'darmanitan': {'standard mode': '-standard', 'zen mode': '-zen', 'galarian standard mode': '-galar-standard', 'galarian zen mode': '-galar-zen'},
+  };
+  const forms = spriteSuffixes[base];
+  if (forms && forms[fl]) return base + forms[fl];
   return base;
 }
 function isRegionalForm(form) {
@@ -692,6 +708,14 @@ function getHighlights(stats) {
 function hasRegionalForms(name) {
   for (const k in POKEMON_DATA) {
     if (POKEMON_DATA[k].name===name && isRegionalForm(POKEMON_DATA[k].form)) return true;
+  }
+  return false;
+}
+function hasMultipleForms(name) {
+  let count = 0;
+  for (const k in POKEMON_DATA) {
+    if (POKEMON_DATA[k].name===name) count++;
+    if (count > 1) return true;
   }
   return false;
 }
@@ -737,7 +761,7 @@ function addCaught() {
     const p = POKEMON_DATA[k];
     if (p.name.toLowerCase() === name.toLowerCase()) forms.push({...p, sprite_name: buildSpriteName(p.name, p.form), regional: isRegionalForm(p.form)});
   }
-  if (forms.length > 1 && forms.some(f => f.regional)) { showFormPicker(forms, nick); return; }
+  if (forms.length > 1) { showFormPicker(forms, nick); return; }
   doAddCaught(name, '', nick);
 }
 
@@ -835,7 +859,7 @@ function setupPokeAutocomplete() {
       const div = document.createElement('div');
       div.className = 'autocomplete-item';
       const status = caughtData.some(c => c.name.toLowerCase() === p.name.toLowerCase()) ? ' [HAVE]' : '';
-      const formIndicator = hasRegionalForms(p.name) ? ' <span style="color:#e94560;font-size:0.75em;font-weight:700">[Forms]</span>' : '';
+      const formIndicator = hasMultipleForms(p.name) ? ' <span style="color:#e94560;font-size:0.75em;font-weight:700">[Forms]</span>' : '';
       div.innerHTML = `<span>${p.name}${status}${formIndicator}</span><span class="info">Total: ${p.total}</span>`;
       div.addEventListener('click', function() {
         input.value = p.name;
@@ -897,14 +921,14 @@ function setupCompareAutocomplete(inputId, listId) {
     for (const p of results.slice(0, 20)) {
       const div = document.createElement('div');
       div.className = 'autocomplete-item';
-      const formIndicator = hasRegionalForms(p.name) ? ' <span style="color:#e94560;font-size:0.75em;font-weight:700">[Forms]</span>' : '';
+      const formIndicator = hasMultipleForms(p.name) ? ' <span style="color:#e94560;font-size:0.75em;font-weight:700">[Forms]</span>' : '';
       div.innerHTML = `<span>${p.name}${formIndicator}</span><span class="info">Total: ${p.total}</span>`;
       div.addEventListener('click', function() {
         const forms = [];
         for (const k in POKEMON_DATA) {
           if (POKEMON_DATA[k].name === p.name) forms.push({...POKEMON_DATA[k], sprite_name: buildSpriteName(p.name, POKEMON_DATA[k].form), regional: isRegionalForm(POKEMON_DATA[k].form)});
         }
-        if (forms.length > 1 && forms.some(f => f.regional)) {
+        if (forms.length > 1) {
           showFormPicker(forms, '', function(name, form) {
             const key = name + (form ? '|' + form : '');
             input.value = name + (form ? ' (' + form + ')' : '');
@@ -1667,9 +1691,9 @@ function setupTeamAutocomplete(inputId, listId, wrapperId, isYourTeam) {
       const extra = isYourTeam ? '' : (hasRegionalForms(p.name) ? ' <span style="color:#e94560;font-size:0.75em;font-weight:700">[Forms]</span>' : '');
       div.innerHTML = `<span>${label}${extra}</span><span class="info">Total: ${p.stats.total||0}</span>`;
       div.addEventListener('click', function() {
-        if (!isYourTeam && hasRegionalForms(p.name)) {
+        if (!isYourTeam) {
           const forms = Object.values(POKEMON_DATA).filter(v => v.name===p.name).map(v => ({...v, sprite_name: buildSpriteName(p.name, v.form), regional: isRegionalForm(v.form)}));
-          if (forms.length > 1 && forms.some(f => f.regional)) {
+          if (forms.length > 1) {
             showFormPicker(forms, '', function(name, form) {
               const fk = Object.keys(POKEMON_DATA).find(k => POKEMON_DATA[k].name===name && (POKEMON_DATA[k].form||'')===form);
               input.value = name + (form ? ' ('+form+')' : ''); input.dataset.pokeKey = fk; input.dataset.pokeForm = form||''; list.innerHTML = '';

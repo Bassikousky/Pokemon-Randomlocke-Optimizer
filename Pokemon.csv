@@ -350,9 +350,9 @@ ID,Name,Form,Type1,Type2,Total,HP,Attack,Defense,Sp. Atk,Sp. Def,Speed,Generatio
 349,Feebas, ,Water,,315,50,45,35,60,55,70,3
 350,Milotic, ,Water, ,540,95,60,79,100,125,81,3
 351,Castform, ,Normal,,510,90,70,90,100,90,70,3
-351,Castform,Sunny Form,Normal,,510,90,70,90,100,90,70,3
-351,Castform,Rainy Form,Normal,,510,90,70,90,100,90,70,3
-351,Castform,Snowy Form,Normal,,510,90,70,90,100,90,70,3
+351,Castform,Sunny Form,Fire,,510,90,70,90,100,90,70,3
+351,Castform,Rainy Form,Water,,510,90,70,90,100,90,70,3
+351,Castform,Snowy Form,Ice,,510,90,70,90,100,90,70,3
 352,Kecleon, ,Normal,,450,60,100,70,60,120,40,3
 353,Shuppet, ,Ghost, ,295,44,75,35,63,33,45,3
 354,Banette, ,Ghost, ,455,64,115,65,83,63,65,3
@@ -420,8 +420,8 @@ ID,Name,Form,Type1,Type2,Total,HP,Attack,Defense,Sp. Atk,Sp. Def,Speed,Generatio
 412,Burmy,Sandy Cloak,Bug, ,224,40,29,45,29,45,36,4
 412,Burmy,Trash Cloak,Bug, ,224,40,29,45,29,45,36,4
 413,Wormadam,Plant Cloak,Bug,Grass,470,80,59,95,95,105,36,4
-413,Wormadam,Sandy Cloak,Bug,Grass,470,80,59,95,95,105,36,4
-413,Wormadam,Trash Cloak,Bug,Grass,470,80,59,95,95,105,36,4
+413,Wormadam,Sandy Cloak,Bug,Ground,470,80,59,95,95,105,36,4
+413,Wormadam,Trash Cloak,Bug,Steel,470,80,59,95,95,105,36,4
 414,Mothim, ,Bug,Flying,475,70,84,60,105,70,86,4
 415,Combee, ,Bug,Flying,244,30,30,42,30,42,70,4
 416,Vespiquen, ,Bug,Flying,474,70,90,102,70,102,40,4
@@ -934,7 +934,7 @@ ID,Name,Form,Type1,Type2,Total,HP,Attack,Defense,Sp. Atk,Sp. Def,Speed,Generatio
 78,Rapidash,Galarian Rapidash,Psychic,Fairy,530,85,110,70,80,80,105,8
 79,Slowpoke,Galarian Slowpoke,Psychic,,315,90,65,65,40,40,15,8
 80,Slowbro,Galarian Slowbro,Poison,Psychic,490,95,100,95,100,70,30,8
-83,Farfetch'd,Galarian Farfetch'd,Flying,Normal,500,85,100,75,60,85,95,8
+83,Farfetch'd,Galarian Farfetch'd,Fighting,,500,85,100,75,60,85,95,8
 100,Voltorb,Hisuian Voltorb,Electric,Grass,330,40,30,50,55,55,100,8
 101,Electrode,Hisuian Electrode,Electric,Grass,500,60,50,70,90,80,150,8
 110,Weezing,Galarian Weezing,Poison,Fairy,500,65,90,120,95,70,60,8
@@ -1216,3 +1216,77 @@ ID,Name,Form,Type1,Type2,Total,HP,Attack,Defense,Sp. Atk,Sp. Def,Speed,Generatio
 1025,Pecharunt, ,Poison,Ghost,600,88,88,160,88,88,88,9
 1026,Royaleon, ,Normal, ,525,110,60,95,130,65,65,9
 1027,Cefireon, ,Flying, ,525,65,65,60,110,95,130,9
+3,Venusaur,Mega Venusaur X,Grass,Poison,625,80,100,123,122,120,80,6
+9,Blastoise,Mega Blastoise X,Water,,630,79,103,120,135,115,78,6
+25,Pikachu,Mega Pikachu,Electric,,630,55,135,100,130,100,110,1
+94,Gengar,Mega Gengar X,Ghost,Poison,600,60,75,80,160,95,130,6
+150,Mewtwo,Mega Armadura,Psychic,,1330,400,150,250,180,250,100,6
+3,Venusaur,Mega Venusaur Y,Grass,Poison,625,80,92,103,130,150,70,9
+9,Blastoise,Mega Blastoise Y,Water,Steel,630,79,93,140,115,145,58,9
+94,Gengar,Mega Gengar Y,Ghost,Dark,600,60,95,110,130,115,90,9
+99,Kingler,Mega Kingler,Water,,600,75,170,135,70,75,75,1
+131,Lapras,Mega Lapras,Water,Ice,635,130,95,100,125,105,80,1
+68,Machamp,Mega Machamp,Fighting,Ground,595,90,160,100,75,95,75,1
+569,Garbodor,Mega Garbodor,Poison,Steel,599,100,125,112,95,112,55,5
+823,Corviknight,Mega Corviknight,Flying,Steel,595,98,117,125,73,95,87,8
+826,Orbeetle,Mega Orbeetle,Bug,Psychic,605,60,65,130,110,140,100,8
+12,Butterfree,Mega Butterfree,Bug,Flying,545,60,55,70,120,130,110,1
+834,Drednaw,Mega Drednaw,Water,Rock,585,90,145,130,58,88,74,8
+839,Coalossal,Mega Coalossal,Rock,Fire,610,110,110,140,110,110,30,8
+841,Flapple,Mega Flapple,Grass,Dragon,585,110,125,100,100,100,50,8
+842,Appletun,Mega Appletun,Grass,Dragon,585,110,105,100,120,100,50,8
+844,Sandaconda,Mega Sandaconda,Ground,,620,72,137,125,75,80,131,8
+851,Centiskorch,Mega Centiskorch,Fire,Bug,625,100,145,95,100,90,95,8
+858,Hatterene,Mega Hatterene,Psychic,Fairy,610,57,110,115,156,123,49,8
+861,Grimmsnarl,Mega Grimmsnarl,Dark,Fairy,610,95,150,85,115,75,90,8
+869,Alcremie,Mega Alcremie,Fairy,,595,65,80,105,130,151,64,8
+879,Copperajah,Mega Copperajah,Steel,,600,122,150,99,80,69,80,8
+884,Duraludon,Mega Duraludon,Steel,Dragon,635,70,115,135,140,70,105,8
+133,Eevee,Mega Eevee,Normal,,535,65,90,110,80,115,75,1
+189,Jumpluff,Mega Jumpluff,Grass,Flying,585,75,100,100,55,125,130,9
+812,Rillaboom,Mega Rillaboom,Grass,,631,100,155,120,100,90,66,9
+815,Cinderace,Mega Cinderace,Fire,,630,80,146,85,95,85,139,9
+818,Inteleon,Mega Inteleon,Water,Dark,630,70,95,75,175,75,140,9
+143,Snorlax,Mega Snorlax,Normal,,640,160,130,85,95,140,30,9
+36,Clefable,Mega Clefable,Fairy,Flying,583,95,80,93,135,110,70,9
+121,Starmie,Mega Starmie,Water,Psychic,620,60,100,105,130,105,120,9
+71,Victreebel,Mega Victreebel,Grass,Poison,590,80,125,85,135,95,70,9
+149,Dragonite,Mega Dragonite,Dragon,Flying,700,91,124,115,145,125,100,9
+154,Meganium,Mega Meganium,Grass,Fairy,625,80,92,115,143,115,80,9
+160,Feraligatr,Mega Feraligatr,Water,Dragon,630,85,160,125,89,93,78,9
+227,Skarmory,Mega Skarmory,Steel,Flying,565,65,140,110,40,100,110,9
+478,Froslass,Mega Froslass,Ice,Ghost,580,70,80,70,140,100,120,9
+500,Emboar,Mega Emboar,Fire,Dark,628,110,148,75,110,110,75,9
+530,Excadrill,Mega Excadrill,Ground,Steel,608,110,165,100,65,65,103,9
+545,Scolipede,Mega Scolipede,Bug,Poison,594,69,140,149,75,99,62,9
+560,Scrafty,Mega Scrafty,Dark,Fighting,588,65,130,135,55,135,68,9
+604,Eelektross,Mega Eelektross,Electric,,615,85,145,80,135,90,80,9
+609,Chandelure,Mega Chandelure,Ghost,Fire,620,60,75,110,175,110,90,9
+652,Chesnaught,Mega Chesnaught,Grass,Fighting,642,100,137,172,74,115,44,9
+655,Delphox,Mega Delphox,Fire,Psychic,634,75,69,72,159,125,134,9
+658,Greninja,Mega Greninja,Water,Dark,630,72,125,77,133,81,142,9
+668,Pyroar,Mega Pyroar,Fire,Normal,607,86,88,92,129,86,126,9
+687,Malamar,Mega Malamar,Dark,Psychic,582,86,102,88,98,120,88,9
+689,Barbaracle,Mega Barbaracle,Rock,Fighting,600,72,140,130,64,106,88,9
+691,Dragalge,Mega Dragalge,Poison,Dragon,594,65,85,105,132,163,44,9
+701,Hawlucha,Mega Hawlucha,Fighting,Flying,600,78,137,100,74,93,118,9
+780,Drampa,Mega Drampa,Normal,Dragon,585,78,85,110,160,116,36,9
+870,Falinks,Mega Falinks,Fighting,Steel,570,65,135,135,70,65,100,9
+670,Floette,Mega Floette,Fairy,,551,74,65,67,125,128,92,9
+398,Staraptor,Mega Staraptor,Fighting,Flying,585,85,140,100,60,90,110,9
+448,Lucario,Mega Lucario Z,Fighting,Psychic,625,70,100,70,164,70,151,9
+740,Crabominable,Mega Crabominable,Fighting,Ice,578,97,157,122,62,107,33,9
+801,Magearna,Mega Magearna,Steel,Fairy,700,80,125,115,170,115,95,9
+359,Absol,Mega Absol Z,Dark,Ghost,565,65,154,60,75,60,151,9
+445,Garchomp,Mega Garchomp Z,Dragon,,700,108,130,85,141,85,151,9
+623,Golurk,Mega Golurk,Ground,Ghost,583,89,159,105,70,105,55,9
+998,Baxcalibur,Mega Baxcalibur,Dragon,Ice,700,115,175,117,105,101,87,9
+952,Scovillain,Mega Scovillain,Grass,Fire,586,65,138,85,138,85,75,9
+970,Glimmora,Mega Glimmora,Rock,Poison,625,83,90,105,150,96,101,9
+768,Golisopod,Mega Golisopod,Bug,Steel,630,75,150,175,70,120,40,9
+807,Zeraora,Mega Zeraora,Electric,,700,88,157,75,147,80,153,9
+485,Heatran,Mega Heatran,Fire,Steel,700,91,120,106,175,141,67,9
+491,Darkrai,Mega Darkrai,Dark,,700,70,120,130,165,130,85,9
+26,Raichu,Mega Raichu X,Electric,,585,60,135,95,90,95,110,1
+26,Raichu,Mega Raichu Y,Electric,,585,60,100,55,160,80,130,1
+358,Chimecho,Mega Chimecho,Psychic,Steel,555,75,50,110,135,120,65,9
