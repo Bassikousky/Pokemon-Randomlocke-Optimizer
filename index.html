@@ -127,11 +127,14 @@ h2 { margin-bottom: 15px; font-size: 1.4em; border-bottom: 2px solid #16213e; pa
 .tab-content.active { display: block; }
 .level-cap-section { display: flex; align-items: center; gap: 15px; flex-wrap:wrap; }
 .level-cap-section input { width: 80px; padding: 8px; border: 1px solid #333; border-radius: 8px; background: #1a1a2e; color: #e0e0e0; font-size: 1.2em; text-align: center; }
-.items-section { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-.item-pill { padding: 4px 14px; border-radius: 20px; background: #333; font-size: 0.85em; display: flex; align-items: center; gap: 8px; }
-.item-pill .remove { cursor: pointer; color: #e94560; font-weight: 700; }
-.item-pill .remove:hover { color: #ff6b6b; }
-.item-pill .stock { color:#4caf50; font-weight:700; }
+.item-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(100px,1fr)); gap:8px; margin-top:10px; }
+.item-card { background:#1a1a2e; border-radius:8px; padding:8px; text-align:center; border:1px solid #333; position:relative; transition:border-color 0.2s; }
+.item-card:hover { border-color:#e94560; }
+.item-card .item-sprite { width:48px; height:48px; image-rendering:pixelated; margin:4px auto; display:block; }
+.item-card .item-name { font-size:0.65em; color:#ccc; word-break:break-word; line-height:1.2; margin-top:4px; }
+.item-card .item-stock { font-size:0.7em; color:#4caf50; font-weight:700; margin-top:2px; }
+.item-card .remove-item { position:absolute; top:2px; right:4px; cursor:pointer; color:#e94560; font-weight:700; font-size:1.1em; line-height:1; }
+.item-card .remove-item:hover { color:#ff6b6b; }
 .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap:wrap; gap:8px; }
 .empty-state { text-align: center; padding: 30px; color: #666; font-size: 1.1em; }
 .badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.75em; font-weight: 600; margin-left: 6px; }
@@ -252,6 +255,10 @@ h2 { margin-bottom: 15px; font-size: 1.4em; border-bottom: 2px solid #16213e; pa
 .coverage-grid .cell-1 { background:transparent; color:#e0e0e0; }
 .coverage-grid .cell-2 { background:#bf360c; color:#ffccbc; font-weight:700; }
 .coverage-grid .cell-4 { background:#b71c1c; color:#ffcdd2; font-weight:700; }
+.coverage-grid .item-badge { display:inline-block; margin-left:2px; font-size:0.85em; cursor:help; }
+.coverage-grid .imm-indicator { display:inline-block; margin-left:2px; color:#ffd700; font-weight:700; font-size:0.85em; cursor:help; }
+.coverage-grid .cell-item-icon { width:20px; height:20px; vertical-align:middle; margin-left:2px; image-rendering:pixelated; }
+.item-select-wrap select { font-size:0.65em; padding:1px 2px; width:100%; background:#0f3460; color:#e0e0e0; border:1px solid #333; border-radius:3px; }
 
 /* Matchups */
 .vs-matchups { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:10px; }
@@ -324,7 +331,7 @@ h2 { margin-bottom: 15px; font-size: 1.4em; border-bottom: 2px solid #16213e; pa
           <input type="number" id="itemQty" value="1" min="1" style="width:60px;padding:10px;border:1px solid #333;border-radius:8px;background:#1a1a2e;color:#e0e0e0;text-align:center;font-size:1em">
           <button class="btn btn-sm btn-success" onclick="addItem()" style="padding:10px 16px" data-i18n="add">Add</button>
         </div>
-        <div class="items-section" id="itemsList"></div>
+        <div id="itemsList"></div>
       </div>
 
       <div class="card">
@@ -691,9 +698,9 @@ function hasRegionalForms(name) {
 
 function init() {
   loadAllPokemon();
-  loadCaught();
   loadLevelCap();
   loadItems();
+  loadCaught();
   loadEvolutions();
   loadBestTeam();
   setupPokeAutocomplete();
@@ -796,6 +803,17 @@ async function loadSprite(imgEl) {
     }
   } catch(e) {}
   imgEl.style.display = 'none';
+}
+
+function itemCodeToApiName(code) {
+  const s = code.toLowerCase();
+  const suffixes = ['berry','stone','candy','ball','disk','plate','drive','memory','incense','shard','apricorn','powder','gem','seed','wing','flute','mail','scarf','belt','glasses','lens','band','ribbon','cape','boots','amulet','doll','card','key','orb','tag','ticket','token','vial','patch','piece','sweet','milk','tea','bag','case','box','jar','bottle','letter','fossil','bone','fang','scale','cloth','coat','fur','dust','dna','soul','spell','book','news','badge','pass','coupon','coin','water','mint','mulch','balloon','juice','soda','nugget','pearl','flower','puff','tuff'];
+  for (const suf of suffixes) {
+    if (s.endsWith(suf) && s.length > suf.length) {
+      return s.slice(0, -suf.length) + '-' + suf;
+    }
+  }
+  return s;
 }
 
 function setupPokeAutocomplete() {
@@ -1085,12 +1103,18 @@ function saveStateToCache() {
 function renderItems() {
   const div = document.getElementById('itemsList');
   div.innerHTML = '';
+  if (itemsData.length === 0) { return; }
+  div.className = 'item-grid';
   for (const item of itemsData) {
-    const pill = document.createElement('span');
-    pill.className = 'item-pill';
-    const stockInfo = item.stock > 1 ? ` <span class="stock">x${item.stock}</span>` : '';
-    pill.innerHTML = `${item.name}${stockInfo} <span class="remove" onclick="removeItem('${item.name}')">&times;</span>`;
-    div.appendChild(pill);
+    const card = document.createElement('div');
+    card.className = 'item-card';
+    const apiName = itemCodeToApiName(item.name);
+    const spriteUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/${apiName}.png`;
+    card.innerHTML = `<img class="item-sprite" src="${spriteUrl}" alt="${item.name}" onerror="this.style.display='none'" loading="lazy">
+      <div class="item-name">${item.name}</div>
+      <div class="item-stock">x${item.stock}</div>
+      <span class="remove-item" onclick="removeItem('${item.name}')">&times;</span>`;
+    div.appendChild(card);
   }
 }
 
@@ -1113,6 +1137,7 @@ function addItem() {
   renderItems();
   showNotification(t('addedItem', item, qty));
   loadEvolutions();
+  if (battleYourTeam.length || battleEnemyTeam.length) { renderTeamSlots(battleYourTeam,'your'); renderTeamSlots(battleEnemyTeam,'enemy'); }
 }
 
 function removeItem(item) {
@@ -1120,6 +1145,7 @@ function removeItem(item) {
   saveStateToCache();
   renderItems();
   loadEvolutions();
+  if (battleYourTeam.length || battleEnemyTeam.length) { renderTeamSlots(battleYourTeam,'your'); renderTeamSlots(battleEnemyTeam,'enemy'); }
 }
 
 let gymMaxIdx = -1;
@@ -1592,26 +1618,54 @@ function newGame() {
 let battleYourTeam = [];
 let battleEnemyTeam = [];
 
+const ITEM_TYPE_MAP = {
+  "CHILANBERRY": "Normal", "OCCABERRY": "Fire", "PASSHOBERRY": "Water",
+  "WACANBERRY": "Electric", "RINDOBERRY": "Grass", "YACHEBERRY": "Ice",
+  "CHOPLEBERRY": "Fighting", "KEBIABERRY": "Poison", "SHUCABERRY": "Ground",
+  "COBABERRY": "Flying", "PAYAPABERRY": "Psychic", "TANGABERRY": "Bug",
+  "CHARTIBERRY": "Rock", "KASIBBERRY": "Ghost", "HABANBERRY": "Dragon",
+  "COLBURBERRY": "Dark", "BABIRIBERRY": "Steel", "ROSELIBERRY": "Fairy",
+  "AIRBALLOON": "Ground"
+};
+
+function getItemMitigatedType(itemCode) { return ITEM_TYPE_MAP[itemCode] || null; }
+
+function setHeldItem(side, idx, itemName) {
+  const team = side === 'your' ? battleYourTeam : battleEnemyTeam;
+  if (!team[idx]) return;
+  team[idx].heldItem = itemName || '';
+  renderBattleAnalysis(); saveBattleTeams();
+}
+
+function displayName(m) { return m.nickname && m.nickname !== m.name ? `${m.name} (${m.nickname})` : m.name; }
+
 function setupTeamAutocomplete(inputId, listId, wrapperId, isYourTeam) {
   const input = document.getElementById(inputId);
   const list = document.getElementById(listId);
   const wrapper = document.getElementById(wrapperId);
   input.addEventListener('input', function() {
-    delete this.dataset.pokeKey; delete this.dataset.pokeForm;
+    delete this.dataset.pokeKey; delete this.dataset.pokeForm; delete this.dataset.pokeNick;
     const val = this.value.trim(); list.innerHTML = '';
     if (val.length < 1) return;
     const q = val.toLowerCase();
     const seen = new Set(); const results = [];
     let pool = isYourTeam
-      ? caughtData.filter(c => c.stats && c.stats.name).map(c => ({name: c.name, form: c.form||'', stats: c.stats}))
+      ? caughtData.filter(c => c.stats && c.stats.name).map(c => ({name: c.name, form: c.form||'', nickname: c.nickname||c.name, stats: c.stats}))
       : Object.values(POKEMON_DATA).filter(p => { if (seen.has(p.name)) return false; seen.add(p.name); return true; }).map(p => ({name: p.name, form: p.form||'', stats: p}));
     seen.clear();
-    for (const p of pool) if (!seen.has(p.name) && p.name.toLowerCase().includes(q)) { seen.add(p.name); results.push(p); }
+    for (const p of pool) {
+      if (isYourTeam) {
+        if (p.name.toLowerCase().includes(q) || (p.nickname||'').toLowerCase().includes(q)) results.push(p);
+      } else {
+        if (!seen.has(p.name) && p.name.toLowerCase().includes(q)) { seen.add(p.name); results.push(p); }
+      }
+    }
     results.sort((a,b) => (b.stats.total||0) - (a.stats.total||0));
     for (const p of results.slice(0, 20)) {
       const div = document.createElement('div'); div.className = 'autocomplete-item';
+      const label = isYourTeam && p.nickname !== p.name ? `${p.name} (${p.nickname})` : p.name;
       const extra = isYourTeam ? '' : (hasRegionalForms(p.name) ? ' <span style="color:#e94560;font-size:0.75em;font-weight:700">[Forms]</span>' : '');
-      div.innerHTML = `<span>${p.name}${extra}</span><span class="info">Total: ${p.stats.total||0}</span>`;
+      div.innerHTML = `<span>${label}${extra}</span><span class="info">Total: ${p.stats.total||0}</span>`;
       div.addEventListener('click', function() {
         if (!isYourTeam && hasRegionalForms(p.name)) {
           const forms = Object.values(POKEMON_DATA).filter(v => v.name===p.name).map(v => ({...v, sprite_name: buildSpriteName(p.name, v.form), regional: isRegionalForm(v.form)}));
@@ -1622,7 +1676,9 @@ function setupTeamAutocomplete(inputId, listId, wrapperId, isYourTeam) {
             }); return;
           }
         }
-        input.value = p.name; input.dataset.pokeKey = p.name; input.dataset.pokeForm = p.form||''; list.innerHTML = '';
+        input.value = p.name; input.dataset.pokeKey = p.name; input.dataset.pokeForm = p.form||'';
+        if (isYourTeam) input.dataset.pokeNick = p.nickname||p.name;
+        list.innerHTML = '';
       });
       list.appendChild(div);
     }
@@ -1631,16 +1687,16 @@ function setupTeamAutocomplete(inputId, listId, wrapperId, isYourTeam) {
 }
 
 function saveBattleTeams() {
-  try { localStorage.setItem('pk_battle_your', JSON.stringify(battleYourTeam.map(m=>({name:m.name,form:m.form||''})))); }catch(e){}
-  try { localStorage.setItem('pk_battle_enemy', JSON.stringify(battleEnemyTeam.map(m=>({name:m.name,form:m.form||''})))); }catch(e){}
+  try { localStorage.setItem('pk_battle_your', JSON.stringify(battleYourTeam.map(m=>({name:m.name,form:m.form||'',nickname:m.nickname||'',heldItem:m.heldItem||''})))); }catch(e){}
+  try { localStorage.setItem('pk_battle_enemy', JSON.stringify(battleEnemyTeam.map(m=>({name:m.name,form:m.form||'',heldItem:m.heldItem||''})))); }catch(e){}
 }
 
 function loadBattleTeams() {
   try {
     const yd = localStorage.getItem('pk_battle_your');
-    if (yd) { const arr = JSON.parse(yd); battleYourTeam = arr.map(({name,form})=>{const key=getNameKey(name);const p=POKEMON_DATA[key]||{};return{name:p.name||name,form:form||'',key,stats:p};}).filter(m=>m.stats.name); }
+    if (yd) { const arr = JSON.parse(yd); battleYourTeam = arr.map(({name,form,nickname,heldItem})=>{const key=getNameKey(name);const p=POKEMON_DATA[key]||{};return{name:p.name||name,form:form||'',key,stats:p,nickname:nickname||'',heldItem:heldItem||''};}).filter(m=>m.stats.name); }
     const ed = localStorage.getItem('pk_battle_enemy');
-    if (ed) { const arr = JSON.parse(ed); battleEnemyTeam = arr.map(({name,form})=>{const key=getNameKey(name);const p=POKEMON_DATA[key]||{};return{name:p.name||name,form:form||'',key,stats:p};}).filter(m=>m.stats.name); }
+    if (ed) { const arr = JSON.parse(ed); battleEnemyTeam = arr.map(({name,form,heldItem})=>{const key=getNameKey(name);const p=POKEMON_DATA[key]||{};return{name:p.name||name,form:form||'',key,stats:p,heldItem:heldItem||''};}).filter(m=>m.stats.name); }
   } catch(e) {}
   renderTeamSlots(battleYourTeam,'your'); renderTeamSlots(battleEnemyTeam,'enemy');
   if (battleYourTeam.length && battleEnemyTeam.length) renderBattleAnalysis();
@@ -1651,14 +1707,18 @@ function addToTeam(team, inputId) {
   const input = document.getElementById(inputId); const name = input.value.trim();
   if (!name) return;
   let form = input.dataset.pokeForm||'', key = input.dataset.pokeKey;
+  if (form && (!key || !POKEMON_DATA[key] || (POKEMON_DATA[key].form||'')!==form)) {
+    const k = Object.keys(POKEMON_DATA).find(k => POKEMON_DATA[k].name.toLowerCase()===name.toLowerCase() && (POKEMON_DATA[k].form||'').toLowerCase()===form.toLowerCase());
+    if (k) key = k;
+  }
   if (!key || !POKEMON_DATA[key]) {
-    if (form) { const k = Object.keys(POKEMON_DATA).find(k => POKEMON_DATA[k].name.toLowerCase()===name.toLowerCase() && (POKEMON_DATA[k].form||'').toLowerCase()===form.toLowerCase()); key = k; }
     if (!key) key = getNameKey(name);
   }
   if (!key || !POKEMON_DATA[key]) { showNotification('Pokemon not found'); return; }
   const p = POKEMON_DATA[key];
-  team.push({name: p.name, form: p.form||'', key, stats: p});
-  input.value = ''; input.dataset.pokeKey = ''; input.dataset.pokeForm = '';
+  const nick = team === battleYourTeam ? (input.dataset.pokeNick || p.name) : undefined;
+  team.push({name: p.name, form: p.form||'', key, stats: p, nickname: nick||'', heldItem: ''});
+  input.value = ''; input.dataset.pokeKey = ''; input.dataset.pokeForm = ''; input.dataset.pokeNick = '';
   renderTeamSlots(team, team===battleYourTeam?'your':'enemy'); renderBattleAnalysis(); saveBattleTeams();
 }
 
@@ -1681,7 +1741,11 @@ function renderTeamSlots(team, side) {
     const e=team[i], form=e.form||'';
     const slot = document.createElement('div'); slot.className='enemy-slot';
     slot.innerHTML=`<img src="" alt="${e.name}" data-sprite="${e.name}" data-form="${form}">
-      <div class="info"><div class="name">${e.name}</div><div class="types">${getTypeBadge(e.stats.type1)} ${getTypeBadge(e.stats.type2)}</div></div>
+      <div class="info"><div class="name">${displayName(e)}</div><div class="types">${getTypeBadge(e.stats.type1)} ${getTypeBadge(e.stats.type2)}</div>
+      <div class="item-select-wrap"><select onchange="setHeldItem('${side}',${i},this.value)">
+        <option value="">—</option>
+        ${itemsData.map(it => `<option value="${it.name}"${(e.heldItem||'')===it.name?' selected':''}>${it.name}</option>`).join('')}
+      </select></div></div>
       <span class="remove" onclick="${side==='your'?'removeFromTeam(battleYourTeam,':'removeFromTeam(battleEnemyTeam,'}${i})">&times;</span>`;
     div.appendChild(slot); loadSprite(slot.querySelector('img'));
   }
@@ -1693,15 +1757,15 @@ function renderTeamSlots(team, side) {
 
 function getMemberDefMult(member, atkType) {
   const dt = [member.stats.type1]; if (member.stats.type2 && member.stats.type2.trim()) dt.push(member.stats.type2.trim());
-  let m = 1; for (const d of dt) m *= (TYPE_CHART[atkType]||{})[d]||1.0; return m;
+  let m = 1; for (const d of dt) { const v = (TYPE_CHART[atkType]||{})[d]; m *= v !== undefined ? v : 1.0; } return m;
 }
 
 function getTeamDefenseProfile(team) {
   const profile = {};
   for (const atkType of ALL_TYPES) {
-    let worst = 1;
-    for (const def of team) { const m = getMemberDefMult(def, atkType); if (m > worst) worst = m; }
-    profile[atkType] = worst;
+    let worst = 1, best = 4;
+    for (const def of team) { const m = getMemberDefMult(def, atkType); if (m > worst) worst = m; if (m < best) best = m; }
+    profile[atkType] = {worst, best};
   }
   return profile;
 }
@@ -1732,8 +1796,9 @@ function renderTeamCards(team, side) {
     return `<div class="vs-poke-card ${side}">
       <span class="remove-tag" onclick="${side==='you'?'removeFromTeam(battleYourTeam,':'removeFromTeam(battleEnemyTeam,'}${i})">&times;</span>
       <img class="sprite" src="" alt="${m.name}" data-sprite="${m.name}" data-form="${form}">
-      <div class="pname">${m.name}</div>
+      <div class="pname">${displayName(m)}</div>
       <div class="ptypes">${m.stats.type1?`<img src="/types/${m.stats.type1}.Png" alt="${m.stats.type1}" style="width:90px;height:auto;vertical-align:middle">`:''}${m.stats.type2&&m.stats.type2.trim()?`<img src="/types/${m.stats.type2.trim()}.Png" alt="${m.stats.type2.trim()}" style="width:90px;height:auto;vertical-align:middle">`:''}</div>
+      ${m.heldItem ? `<div style="font-size:0.65em;color:#ffd700;text-align:center;margin-top:2px"><img style="width:24px;height:24px;vertical-align:middle;image-rendering:pixelated" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/${itemCodeToApiName(m.heldItem)}.png" alt="${m.heldItem}" onerror="this.style.display='none'"> ${m.heldItem}</div>` : ''}
       ${getMemberStatBar(m.stats)}
     </div>`;
   }).join('');
@@ -1741,25 +1806,37 @@ function renderTeamCards(team, side) {
 
 function renderCoverageGrid(teamA, teamB) {
   let html = '<div class="coverage-grid-wrap"><table class="coverage-grid"><thead><tr><th>Type</th>';
-  for (const m of teamA) html += `<th>${m.name}</th>`;
+  for (const m of teamA) html += `<th>${displayName(m)}</th>`;
   html += '<th style="color:#4caf50">YOUR</th>';
-  for (const m of teamB) html += `<th>${m.name}</th>`;
+  for (const m of teamB) html += `<th>${displayName(m)}</th>`;
   html += '<th style="color:#e94560">ENEMY</th></tr></thead><tbody>';
 
   for (const atkType of ALL_TYPES) {
     html += `<tr><td class="type-label"><img src="/types/${atkType}.Png" alt="${atkType}" style="width:72px;height:auto;display:block;margin:0 auto"></td>`;
     for (const m of teamA) {
       const v = getMemberDefMult(m, atkType); const cls = `cell-${String(v).replace('.','')}`;
-      html += `<td class="${cls}">${v===0?'0':v<1?'½':'×'+v}</td>`;
+      let label = v===0?'INMUNE':v<1?'½':'×'+v;
+      const mit = getItemMitigatedType(m.heldItem);
+      if (mit === atkType && v > 0) { const iu = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/${itemCodeToApiName(m.heldItem)}.png`; label += `<img class="cell-item-icon" src="${iu}" alt="${m.heldItem}" title="${m.heldItem}" onerror="this.style.display='none'">`; }
+      html += `<td class="${cls}">${label}</td>`;
     }
-    const yMult = getTeamDefenseProfile(teamA)[atkType];
-    html += `<td class="cell-${String(yMult).replace('.','')}" style="font-weight:700;border-color:#4caf50">${yMult===0?'0':yMult<1?'½':'×'+yMult}</td>`;
+    const yProf = getTeamDefenseProfile(teamA)[atkType];
+    const yLabel = yProf.worst===0?'INMUNE':yProf.worst<1?'½':'×'+yProf.worst;
+    const yCls = `cell-${String(yProf.worst).replace('.','')}`;
+    const yImmBadge = yProf.best===0 && yProf.worst>0 ? '<span class="imm-indicator" title="Some immune">†</span>' : '';
+    html += `<td class="${yCls}" style="font-weight:700;border-color:#4caf50">${yLabel}${yImmBadge}</td>`;
     for (const m of teamB) {
       const v = getMemberDefMult(m, atkType); const cls = `cell-${String(v).replace('.','')}`;
-      html += `<td class="${cls}">${v===0?'0':v<1?'½':'×'+v}</td>`;
+      let label = v===0?'INMUNE':v<1?'½':'×'+v;
+      const mit = getItemMitigatedType(m.heldItem);
+      if (mit === atkType && v > 0) { const iu = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/${itemCodeToApiName(m.heldItem)}.png`; label += `<img class="cell-item-icon" src="${iu}" alt="${m.heldItem}" title="${m.heldItem}" onerror="this.style.display='none'">`; }
+      html += `<td class="${cls}">${label}</td>`;
     }
-    const eMult = getTeamDefenseProfile(teamB)[atkType];
-    html += `<td class="cell-${String(eMult).replace('.','')}" style="font-weight:700;border-color:#e94560">${eMult===0?'0':eMult<1?'½':'×'+eMult}</td>`;
+    const eProf = getTeamDefenseProfile(teamB)[atkType];
+    const eLabel = eProf.worst===0?'INMUNE':eProf.worst<1?'½':'×'+eProf.worst;
+    const eCls = `cell-${String(eProf.worst).replace('.','')}`;
+    const eImmBadge = eProf.best===0 && eProf.worst>0 ? '<span class="imm-indicator" title="Some immune">†</span>' : '';
+    html += `<td class="${eCls}" style="font-weight:700;border-color:#e94560">${eLabel}${eImmBadge}</td>`;
     html += '</tr>';
   }
   html += '</tbody></table></div>';
@@ -1776,7 +1853,7 @@ function renderMatchups(teamA, teamB) {
       let best = 0, worst = 4;
       for (const atk of atkTypes) {
         for (const dt of [enemy.stats.type1].concat(enemy.stats.type2&&enemy.stats.type2.trim()?[enemy.stats.type2.trim()]:[])) {
-          const mult = (TYPE_CHART[atk]||{})[dt]||1;
+          const v = (TYPE_CHART[atk]||{})[dt]; const mult = v !== undefined ? v : 1;
           if (mult > best) best = mult;
           if (mult < worst) worst = mult;
         }
@@ -1790,19 +1867,19 @@ function renderMatchups(teamA, teamB) {
     html += `<div class="vs-matchup-card">
       <div class="mu-header">
         <img src="" alt="${your.name}" data-sprite="${your.name}" data-form="${form}">
-        <span class="muname">${your.name}</span>
+        <span class="muname">${displayName(your)}</span>
         <span class="arrow">→</span>
         <span style="font-size:0.7em;color:#aaa">best vs</span>
       </div>
       <div class="mu-detail">
-        <span style="font-weight:600;color:#e0e0e0">${bestThreat.enemy.name}</span>
+        <span style="font-weight:600;color:#e0e0e0">${displayName(bestThreat.enemy)}</span>
         <span class="eff-badge" style="background:${bestThreat.best>1?'#e94560':'#4caf50'};color:#fff">SE vs ${bestThreat.best>1?'✓': '✗'}</span>
         <span style="color:#666">|</span>
-        <span style="color:#aaa">Your ${your.name} deals ${bestThreat.best>1?'<b style="color:#e94560">×'+bestThreat.best+'</b>':'<b>×'+bestThreat.best+'</b>'} to ${bestThreat.enemy.name}</span>
+        <span style="color:#aaa">${displayName(your)} deals ${bestThreat.best>1?'<b style="color:#e94560">×'+bestThreat.best+'</b>':'<b>×'+bestThreat.best+'</b>'} to ${displayName(bestThreat.enemy)}</span>
       </div>
       <div class="mu-detail" style="margin-top:4px">
         <span style="color:#aaa">Weakest vs:</span>
-        <span style="font-weight:600;color:#e0e0e0">${worstThreat.enemy.name}</span>
+        <span style="font-weight:600;color:#e0e0e0">${displayName(worstThreat.enemy)}</span>
         <span class="eff-badge" style="background:#666;color:#fff">×${worstThreat.worst<1?'½':worstThreat.worst}</span>
       </div>
     </div>`;
@@ -1819,12 +1896,12 @@ function renderBattleAnalysis() {
   const yAvg = getTeamAvgStats(yT), eAvg = getTeamAvgStats(eT);
   const yTotal = yT.reduce((s,m)=>s+(m.stats.total||0),0);
   const eTotal = eT.reduce((s,m)=>s+(m.stats.total||0),0);
-  const yWeak = ALL_TYPES.filter(t=>yDef[t]>=2).length;
-  const eWeak = ALL_TYPES.filter(t=>eDef[t]>=2).length;
-  const yRes = ALL_TYPES.filter(t=>yDef[t]<=0.5&&yDef[t]>0).length;
-  const eRes = ALL_TYPES.filter(t=>eDef[t]<=0.5&&eDef[t]>0).length;
-  const yImm = ALL_TYPES.filter(t=>yDef[t]===0).length;
-  const eImm = ALL_TYPES.filter(t=>eDef[t]===0).length;
+  const yWeak = ALL_TYPES.filter(t=>yDef[t].worst>=2).length;
+  const eWeak = ALL_TYPES.filter(t=>eDef[t].worst>=2).length;
+  const yRes = ALL_TYPES.filter(t=>yDef[t].worst<=0.5&&yDef[t].worst>0).length;
+  const eRes = ALL_TYPES.filter(t=>eDef[t].worst<=0.5&&eDef[t].worst>0).length;
+  const yImm = ALL_TYPES.filter(t=>yDef[t].best===0).length;
+  const eImm = ALL_TYPES.filter(t=>eDef[t].best===0).length;
   const yCover = Math.round(ALL_TYPES.filter(t=>yT.some(m=>{const at=[m.stats.type1];if(m.stats.type2&&m.stats.type2.trim())at.push(m.stats.type2.trim());return at.some(a=>(TYPE_CHART[a]||{})[t]>1);})).length/ALL_TYPES.length*100);
   const eCover = Math.round(ALL_TYPES.filter(t=>eT.some(m=>{const at=[m.stats.type1];if(m.stats.type2&&m.stats.type2.trim())at.push(m.stats.type2.trim());return at.some(a=>(TYPE_CHART[a]||{})[t]>1);})).length/ALL_TYPES.length*100);
 
