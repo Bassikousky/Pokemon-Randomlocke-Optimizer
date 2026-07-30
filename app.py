@@ -107,6 +107,7 @@ def build_sprite_name(name, form=""):
         "rotom": {"heat rotom": "-heat", "wash rotom": "-wash", "frost rotom": "-frost", "fan rotom": "-fan", "mow rotom": "-mow"},
         "castform": {"sunny form": "-sunny", "rainy form": "-rainy", "snowy form": "-snowy"},
         "darmanitan": {"standard mode": "-standard", "zen mode": "-zen", "galarian standard mode": "-galar-standard", "galarian zen mode": "-galar-zen"},
+        "toxtricity": {"amped form": "-amped", "low key form": "-low-key"},
     }
     forms = sprite_suffixes.get(base)
     if forms and f_lower in forms:

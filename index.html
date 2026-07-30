@@ -445,7 +445,7 @@ h2 { margin-bottom: 15px; font-size: 1.4em; border-bottom: 2px solid #16213e; pa
     <div class="tab-content" id="tab-teambattle">
       <div style="display:grid;grid-template-columns:300px 1fr;gap:16px;margin-bottom:16px">
         <div class="card" style="padding:12px">
-          <h2 style="font-size:1em;color:#4caf50;border:none;margin-bottom:8px" data-i18n="yourTeam">Your Team</h2>
+          <h2 style="font-size:1em;color:#4caf50;border:none;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center" data-i18n="yourTeam">Your Team<button class="btn btn-sm" onclick="clearTeam('your')" style="background:#333;color:#e0e0e0;font-size:0.7em;padding:2px 8px;cursor:pointer" data-i18n="clear">Clear</button></h2>
           <div id="yourTeamSlots" style="display:flex;flex-direction:column;gap:6px"></div>
           <div style="margin-top:8px">
             <div class="autocomplete" id="autocomplete-your">
@@ -456,7 +456,7 @@ h2 { margin-bottom: 15px; font-size: 1.4em; border-bottom: 2px solid #16213e; pa
           </div>
         </div>
         <div class="card" style="padding:12px">
-          <h2 style="font-size:1em;color:#e94560;border:none;margin-bottom:8px" data-i18n="enemyTeam">Enemy Team</h2>
+          <h2 style="font-size:1em;color:#e94560;border:none;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center" data-i18n="enemyTeam">Enemy Team<button class="btn btn-sm" onclick="clearTeam('enemy')" style="background:#333;color:#e0e0e0;font-size:0.7em;padding:2px 8px;cursor:pointer" data-i18n="clear">Clear</button></h2>
           <div id="enemyTeamSlots" style="display:flex;flex-direction:column;gap:6px"></div>
           <div style="margin-top:8px">
             <div class="autocomplete" id="autocomplete-enemy">
@@ -676,6 +676,7 @@ function buildSpriteName(name, form) {
     'rotom': {'heat rotom': '-heat', 'wash rotom': '-wash', 'frost rotom': '-frost', 'fan rotom': '-fan', 'mow rotom': '-mow'},
     'castform': {'sunny form': '-sunny', 'rainy form': '-rainy', 'snowy form': '-snowy'},
     'darmanitan': {'standard mode': '-standard', 'zen mode': '-zen', 'galarian standard mode': '-galar-standard', 'galarian zen mode': '-galar-zen'},
+    'toxtricity': {'amped form': '-amped', 'low key form': '-low-key'},
   };
   const forms = spriteSuffixes[base];
   if (forms && forms[fl]) return base + forms[fl];
