@@ -552,6 +552,11 @@ const LANG = {
     vsDefenseScore: 'Defense Score',
     vsOverall: 'Overall',
     vsSlot: 'Slot',
+    stickyWeb: 'Sticky Web',
+    stickyWebNote: 'Enemy team Speed \u00d72/3',
+    speedRanking: 'Speed Ranking',
+    speed: 'Speed',
+    team: 'Team',
   },
   es: {
     title: 'Optimizador de Equipo Pok\u00e9mon', addPokemon: 'Agregar Pok\u00e9mon', pokeNameLabel: 'Nombre del Pok\u00e9mon',
@@ -625,6 +630,11 @@ const LANG = {
     vsDefenseScore: 'Punt. Defensa',
     vsOverall: 'General',
     vsSlot: 'Espacio',
+    stickyWeb: 'Red Viscosa',
+    stickyWebNote: 'Velocidad del equipo enemigo \u00d72/3',
+    speedRanking: 'Ranking de Velocidad',
+    speed: 'Velocidad',
+    team: 'Equipo',
   }
 };
 function t(key, ...args) {
@@ -639,6 +649,7 @@ function toggleLang() {
   document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
   document.querySelectorAll('[data-i18n-placeholder]').forEach(el => { el.placeholder = t(el.dataset.i18nPlaceholder); });
   document.title = t('title');
+  updateStickyWebHint();
   renderCaught();
   loadBestTeam();
   queryByStat();
@@ -1642,6 +1653,24 @@ function newGame() {
 // ---- Pro Team Battle Section ----
 let battleYourTeam = [];
 let battleEnemyTeam = [];
+let stickyWebEnabled = false;
+
+function toggleStickyWeb() {
+  stickyWebEnabled = document.getElementById('stickyWebCheck').checked;
+  updateStickyWebHint();
+  renderBattleAnalysis();
+}
+
+function updateStickyWebHint() {
+  const h = document.getElementById('stickyWebHint');
+  if (h) h.textContent = stickyWebEnabled ? t('stickyWebNote') : '';
+}
+
+function getEffectiveSpeed(m, side) {
+  let s = m.stats.speed || 0;
+  if (side === 'enemy' && stickyWebEnabled) s = Math.floor(s * 2 / 3);
+  return s;
+}
 
 const ITEM_TYPE_MAP = {
   "CHILANBERRY": "Normal", "OCCABERRY": "Fire", "PASSHOBERRY": "Water",
@@ -1913,6 +1942,40 @@ function renderMatchups(teamA, teamB) {
   return html;
 }
 
+function renderSpeedRanking(yT, eT) {
+  const rows = [];
+  yT.forEach(m => rows.push({m, side:'you', sp:getEffectiveSpeed(m,'your')}));
+  eT.forEach(m => rows.push({m, side:'enemy', sp:getEffectiveSpeed(m,'enemy')}));
+  rows.sort((a,b) => b.sp - a.sp);
+  let html = `<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin:14px 0 8px;border-bottom:1px solid #333;padding-bottom:6px;flex-wrap:wrap">
+    <h3 style="font-size:0.9em;color:#f9a825;margin:0">⚡ ${t('speedRanking')}</h3>
+    <label style="display:flex;align-items:center;gap:6px;font-size:0.8em;color:#e0e0e0;cursor:pointer">
+      <input type="checkbox" id="stickyWebCheck" onchange="toggleStickyWeb()" ${stickyWebEnabled?'checked':''} style="accent-color:#e94560;width:15px;height:15px;cursor:pointer">
+      <span data-i18n="stickyWeb">Sticky Web</span>
+      <span id="stickyWebHint" style="color:#f9a825;font-size:0.75em">${stickyWebEnabled ? t('stickyWebNote') : ''}</span>
+    </label>
+  </div>`;
+  html += '<div class="coverage-grid-wrap"><table class="coverage-grid" style="min-width:420px"><thead>';
+  html += `<tr><th>#</th><th style="width:48px"></th><th style="text-align:left;min-width:130px">${t('pokemon')}</th><th>${t('team')}</th><th>${t('speed')}</th></tr></thead><tbody>`;
+  rows.forEach((r,i) => {
+    const form = r.m.form||'';
+    const sideColor = r.side==='you' ? '#4caf50' : '#e94560';
+    const sideLabel = r.side==='you' ? t('yourTeam') : t('enemyTeam');
+    const base = r.m.stats.speed||0;
+    let spLabel = '' + r.sp;
+    if (r.side==='enemy' && stickyWebEnabled && r.sp !== base) spLabel = `<s style="opacity:0.6">${base}</s> ${r.sp}`;
+    html += `<tr>
+      <td>${i+1}</td>
+      <td style="text-align:center"><img src="" alt="${r.m.name}" data-sprite="${r.m.name}" data-form="${form}" style="width:48px;height:48px;vertical-align:middle;image-rendering:pixelated"></td>
+      <td style="text-align:left;font-size:1.25em;font-weight:600">${displayName(r.m)}</td>
+      <td style="color:${sideColor};font-weight:600">${sideLabel}</td>
+      <td style="font-weight:700;color:#f9a825">${spLabel}</td>
+    </tr>`;
+  });
+  html += '</tbody></table></div>';
+  return html;
+}
+
 function renderBattleAnalysis() {
   const yT = battleYourTeam, eT = battleEnemyTeam;
   if (!yT.length || !eT.length) { document.getElementById('battleAnalysis').innerHTML=''; return; }
@@ -1949,6 +2012,8 @@ function renderBattleAnalysis() {
   html += '<div>'+renderTeamCards(yT,'you')+'</div>';
   html += '<div>'+renderTeamCards(eT,'enemy')+'</div>';
   html += '</div>';
+
+  html += renderSpeedRanking(yT, eT);
 
   html += `<h3 style="font-size:0.9em;color:#e94560;margin-bottom:8px;border-bottom:1px solid #333;padding-bottom:6px">🛡️ Defensive Coverage</h3>`;
   html += renderCoverageGrid(yT, eT);
