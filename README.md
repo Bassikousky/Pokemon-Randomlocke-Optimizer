@@ -1,5 +1,7 @@
 # Pokemon Team Optimizer
 
+🔗[Live URL](https://pokemon-randomlocke-optimizer-1.onrender.com/)
+
 A self-contained web application for managing your Pokemon team during randomized or nuzlocke playthroughs. Track caught Pokemon, manage items, control level caps, and optimize your team — all with a bilingual (English/Spanish) single-page interface.
 
 ## Features
