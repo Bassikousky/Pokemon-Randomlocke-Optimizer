@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+.venv/
+venv/
+env/
+.Python
+
+# PyInstaller
+build/
+dist/
+*.manifest
+
+# Flask / runtime state (datos personales de uso, no van al repo)
+caught.json
+items.json
+config.json
+saves/
+instance/
+
+# Backups locales de desarrollo
+backup/
+
+# IDEs y SO
+.idea/
+.vscode/
+*.log
+Thumbs.db
+.DS_Store
